@@ -88,12 +88,17 @@
             position: relative; /* Needed for absolutely positioned elements relative to body */
         }
 
-        html, body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            box-sizing: border-box;
-        }
+       html {
+    overflow-x: hidden; /* ❗ Solo oculta el scroll lateral */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    min-height: 100vh;
+    overflow-x: hidden; /* Por si acaso */
+}
 
         body.light-theme {
             background-image: linear-gradient(135deg, var(--light-bg-gradient-start) 0%, var(--light-bg-gradient-mid) 60%, var(--light-bg-gradient-end) 100%);
