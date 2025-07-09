@@ -34,7 +34,7 @@
             --blue-element-color: rgba(59, 130, 246, 0.3); /* Azul con transparencia */
 
             /* New variable for the sakura tree image */
-            --sakura-right-image: url('./images/sakura-2.png'); /* Dark theme image */
+            --sakura-right-image: url('https://placehold.co/300x300/1a1a1a/e0e0e0?text=Sakura+Dark'); /* Placeholder for dark theme image */
         }
 
         /* Tema claro */
@@ -66,7 +66,7 @@
             --light-bg-gradient-end: #e0f0ff;   /* Azul muy claro */
 
             /* New variable for the sakura tree image */
-            --sakura-right-image: url('./images/sakura beautiful.png'); /* Light theme image */
+            --sakura-right-image: url('https://placehold.co/300x300/f0f0f0/333333?text=Sakura+Light'); /* Placeholder for light theme image */
         }
 
         body {
@@ -81,11 +81,18 @@
             margin: 0;
             overflow: hidden; /* Important to keep elements off-screen from causing scrollbars */
             background-image: radial-gradient(circle at top left, var(--container-bg-start) 0%, transparent 50%),
-                                radial-gradient(circle at bottom right, var(--container-bg-end) 0%, transparent 50%);
+                               radial-gradient(circle at bottom right, var(--container-bg-end) 0%, transparent 50%);
             background-size: 100% 100%;
             background-repeat: no-repeat;
             transition: background-color 0.5s ease, color 0.5s ease;
             position: relative; /* Needed for absolutely positioned elements relative to body */
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            box-sizing: border-box;
         }
 
         body.light-theme {
@@ -193,34 +200,6 @@
 
         /* --- Estilos para elementos visuales adicionales --- */
 
-        /* Sakura Tree (using a background image for simplicity) */
-        .sakura-tree-div { /* Renamed class to avoid conflict with actual image tag */
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 300px; /* Adjust size as needed */
-            height: 300px; /* Adjust size as needed */
-            background-image: var(--sakura-tree-image); /* Use the CSS variable here if you want a div with a background image */
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: bottom right;
-            opacity: var(--sakura-tree-opacity);
-            transition: opacity 0.5s ease, background-image 0.5s ease; /* Add transition for background-image */
-            pointer-events: none; /* Allows clicks to pass through */
-            z-index: 1; /* Below the container */
-        }
-        /* Fallback if image not found or for a simpler version */
-        .sakura-tree-div::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 70% 30%, rgba(255, 192, 203, 0.7), transparent 60%); /* Pink bloom */
-            border-radius: 50%;
-            filter: blur(30px);
-            opacity: 0.5;
-            animation: sakuraBloom 3s ease-in-out infinite alternate;
-        }
         @keyframes sakuraBloom {
             0% { transform: scale(1); opacity: 0.5; }
             100% { transform: scale(1.05); opacity: 0.6; }
@@ -253,41 +232,55 @@
             transform: rotate(-30deg);
             animation-delay: 2.5s; /* Stagger animation */
         }
+
+        /* Responsive adjustments for corner images */
         .top-left-img { /* Renamed class for clarity */
             position: absolute;
             top: 0;
             left: 0;
-            width: 100px;
+            width: 15vw; /* Use vw for responsive width */
+            max-width: 100px; /* Max width to prevent it from getting too large */
+            height: auto; /* Maintain aspect ratio */
             z-index: 0; /* Send behind other content */
         }
         .shape-bottom {
             position: absolute;
             left: 0;
             bottom: 0;
-            width: 200px;
+            width: 25vw; /* Use vw for responsive width */
+            max-width: 200px; /* Max width to prevent it from getting too large */
+            height: auto; /* Maintain aspect ratio */
+            z-index: 0; /* Send behind other content */
         }
+
+        /* Responsive adjustments for right-side images */
         .right-img,
         .right-img2 {
             position: absolute;
-            right: -105px;
-            height: 96vh;
+            right: 0; /* Position at the right edge */
+            height: 96vh; /* Maintain vertical height */
+            width: auto; /* Allow width to adjust based on height */
+            transform: translateX(18%); /* Push 30% of its own width off-screen to the right */
             top: 0;
             z-index: 0; /* Send behind other content */
-            transition: opacity 0.5s ease; /* Add transition for smoothness */
+            transition: opacity 0.5s ease, transform 0.5s ease; /* Add transform to transition */
         }
         .right-img2 {
-            right: -110px;
             height: 87vh;
             top: -5px;
-        } 
+            transform: translateX(18%); /* Also push off-screen */
+        }
         .right-black {
             position: absolute;
-            right: -105px;
+            right: 0;
             height: 94vh;
+            width: auto;
+            transform: translateX(18%);
             top: 0;
             z-index: 0;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
+
         @keyframes floatAndPulse {
             0% { transform: translate(0, 0) scale(1); opacity: 0.7; }
             50% { transform: translate(10px, 10px) scale(1.05); opacity: 0.8; }
@@ -356,6 +349,11 @@
                 height: 120px;
                 filter: blur(40px);
             }
+            .right-img,
+            .right-img2,
+            .right-black {
+                transform: translateX(25%); /* Adjust offset for smaller screens */
+            }
         }
 
         @media (max-width: 768px) {
@@ -382,6 +380,22 @@
                 width: 20px; /* Hojas más pequeñas en móvil */
                 height: 20px;
             }
+            .right-img,
+            .right-img2,
+            .right-black {
+                transform: translateX(25%);
+                top: inherit;
+                bottom: 0 !important;
+            }
+            .right-img2 {
+                
+            }
+            .title {
+                font-size: 2.5rem; /* Smaller title on tablets */
+            }
+            .timer-display {
+                font-size: 3.5rem; /* Smaller timer on tablets */
+            }
         }
 
         @media (max-width: 480px) {
@@ -405,12 +419,35 @@
                 width: 15px; /* Aún más pequeñas en pantallas muy pequeñas */
                 height: 15px;
             }
+            .right-img,
+            .right-img2,
+            .right-black {
+                transform: translateX(20%); /* Even smaller offset or hide if needed */
+                height: 70vh; /* Adjust height for mobile */
+            }
+            .title {
+                font-size: 2rem; /* Even smaller title on mobile */
+            }
+            .timer-display {
+                font-size: 2.8rem; /* Even smaller timer on mobile */
+            }
+            .timer-display span {
+                margin: 0 0.2rem; /* Reduce margin between time units */
+            }
+            .timer-label {
+                font-size: 1rem; /* Smaller labels on mobile */
+            }
+            .message {
+                font-size: 1.2rem; /* Smaller message on mobile */
+            }
         }
     </style>
 </head>
 <body>
-    <img class="top-left-img" src="./images/cut.png" alt="">
-    <div class="sakura-tree-div"></div> <div class="blue-element top-left"></div>
+    <!-- Se utilizan imágenes de marcador de posición ya que las rutas originales eran locales. Reemplaza con URLs de imágenes reales si están disponibles. -->
+    <img class="top-left-img" src="./images/cut.png" alt="Elemento decorativo">
+    <div class="sakura-tree-div"></div>
+    <div class="blue-element top-left"></div>
     <div class="blue-element bottom-left"></div>
     <button id="themeToggleButton" class="theme-toggle-button">
         <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: block;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
@@ -419,12 +456,13 @@
     <div class="container">
         <h1 class="title">AWS Community Fest</h1>
         <div id="timerDisplay" class="timer-display">
-            </div>
+        </div>
         <div id="message" class="message"></div>
     </div>
-    <img id="sakuraRightLight" src="./images/sakura beautiful.png" alt="Sakura Tree Light" class="right-img">
-    <img id="sakuraRightDark" src="./images/sakura-2-Photoroom.png" alt="Sakura Tree Dark" class="right-img2">
-    <img src="./images/shape-bottom.png" class="shape-bottom" alt="">
+    <!-- Se utilizan imágenes de marcador de posición ya que las rutas originales eran locales. Reemplaza con URLs de imágenes reales si están disponibles. -->
+    <img id="sakuraRightLight" src="images/sakura beautiful.png" alt="Árbol de Sakura Claro" class="right-img">
+    <img id="sakuraRightDark" src="images/sakura-2-Photoroom.png" alt="Árbol de Sakura Oscuro" class="right-img2">
+    <img src="./images/shape-bottom.png" class="shape-bottom" alt="Forma decorativa">
 
     <script>
         const timerDisplay = document.getElementById('timerDisplay');
