@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,11 +31,14 @@
             --toggle-text: #ffffff;
             --toggle-hover-bg: #2563eb;
             /* Colores para elementos visuales */
-            --sakura-tree-opacity: 0.2; /* Opacidad del árbol en tema oscuro */
-            --blue-element-color: rgba(59, 130, 246, 0.3); /* Azul con transparencia */
+            --sakura-tree-opacity: 0.2;
+            /* Opacidad del árbol en tema oscuro */
+            --blue-element-color: rgba(59, 130, 246, 0.3);
+            /* Azul con transparencia */
 
             /* New variable for the sakura tree image */
-            --sakura-right-image: url('https://placehold.co/300x300/1a1a1a/e0e0e0?text=Sakura+Dark'); /* Placeholder for dark theme image */
+            --sakura-right-image: url('https://placehold.co/300x300/1a1a1a/e0e0e0?text=Sakura+Dark');
+            /* Placeholder for dark theme image */
         }
 
         /* Tema claro */
@@ -61,12 +65,16 @@
             --blue-element-color: rgba(59, 130, 246, 0.6);
 
             /* NUEVOS Colores para el degradado de fondo en tema claro */
-            --light-bg-gradient-start: #fefefe; /* Casi blanco */
-            --light-bg-gradient-mid: #ffe0f0;   /* Rosa muy claro */
-            --light-bg-gradient-end: #e0f0ff;   /* Azul muy claro */
+            --light-bg-gradient-start: #fefefe;
+            /* Casi blanco */
+            --light-bg-gradient-mid: #ffe0f0;
+            /* Rosa muy claro */
+            --light-bg-gradient-end: #e0f0ff;
+            /* Azul muy claro */
 
             /* New variable for the sakura tree image */
-            --sakura-right-image: url('https://placehold.co/300x300/f0f0f0/333333?text=Sakura+Light'); /* Placeholder for light theme image */
+            --sakura-right-image: url('https://placehold.co/300x300/f0f0f0/333333?text=Sakura+Light');
+            /* Placeholder for light theme image */
         }
 
         body {
@@ -79,26 +87,30 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            overflow: hidden; /* Important to keep elements off-screen from causing scrollbars */
+            overflow: hidden;
+            /* Important to keep elements off-screen from causing scrollbars */
             background-image: radial-gradient(circle at top left, var(--container-bg-start) 0%, transparent 50%),
-                               radial-gradient(circle at bottom right, var(--container-bg-end) 0%, transparent 50%);
+                radial-gradient(circle at bottom right, var(--container-bg-end) 0%, transparent 50%);
             background-size: 100% 100%;
             background-repeat: no-repeat;
             transition: background-color 0.5s ease, color 0.5s ease;
-            position: relative; /* Needed for absolutely positioned elements relative to body */
+            position: relative;
+            /* Needed for absolutely positioned elements relative to body */
         }
 
-       html {
-    overflow-x: hidden; /* ❗ Solo oculta el scroll lateral */
-}
+        html {
+            overflow-x: hidden;
+            /* ❗ Solo oculta el scroll lateral */
+        }
 
-body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    min-height: 100vh;
-    overflow-x: hidden; /* Por si acaso */
-}
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            min-height: 100vh;
+            overflow-x: hidden;
+            /* Por si acaso */
+        }
 
         body.light-theme {
             background-image: linear-gradient(135deg, var(--light-bg-gradient-start) 0%, var(--light-bg-gradient-mid) 60%, var(--light-bg-gradient-end) 100%);
@@ -113,12 +125,22 @@ body {
             animation: fadeIn 1s ease-out;
             transition: background-color 0.5s ease, box-shadow 0.5s ease;
             position: relative;
-            z-index: 2; /* Ensures container is above background elements */
+            z-index: 2;
+            /* Ensures container is above background elements */
         }
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
         .title {
             font-size: 3.5rem;
             font-weight: 700;
@@ -133,6 +155,7 @@ body {
             color: transparent;
             transition: all 0.5s ease;
         }
+
         .timer-display {
             font-size: 4.5rem;
             font-weight: 700;
@@ -152,10 +175,12 @@ body {
             flex-wrap: wrap;
             transition: all 0.5s ease;
         }
+
         .timer-display span {
             display: inline-block;
             margin: 0 0.5rem;
         }
+
         .timer-label {
             font-size: 1.2rem;
             font-weight: 400;
@@ -164,6 +189,7 @@ body {
             color: var(--label-color);
             transition: color 0.5s ease;
         }
+
         .message {
             margin-top: 1.5rem;
             font-size: 1.5rem;
@@ -180,23 +206,32 @@ body {
             background-color: var(--toggle-bg);
             color: var(--toggle-text);
             border: none;
-            border-radius: 50%; /* ¡Cambiado a 50% para que sea redondo! */
-            padding: 0.75rem; /* Ajusta el padding para un tamaño de botón adecuado */
-            width: 48px; /* Tamaño fijo para el botón redondo */
-            height: 48px; /* Tamaño fijo para el botón redondo */
+            border-radius: 50%;
+            /* ¡Cambiado a 50% para que sea redondo! */
+            padding: 0.75rem;
+            /* Ajusta el padding para un tamaño de botón adecuado */
+            width: 48px;
+            /* Tamaño fijo para el botón redondo */
+            height: 48px;
+            /* Tamaño fijo para el botón redondo */
             cursor: pointer;
             font-size: 1rem;
-            display: flex; /* Mantenido para centrar el ícono */
-            justify-content: center; /* Centra el ícono horizontalmente */
-            align-items: center; /* Centra el ícono verticalmente */
+            display: flex;
+            /* Mantenido para centrar el ícono */
+            justify-content: center;
+            /* Centra el ícono horizontalmente */
+            align-items: center;
+            /* Centra el ícono verticalmente */
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             transition: background-color 0.3s ease, box-shadow 0.3s ease;
             z-index: 10;
         }
+
         .theme-toggle-button:hover {
             background-color: var(--toggle-hover-bg);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
+
         .theme-toggle-button svg {
             width: 1.2em;
             height: 1.2em;
@@ -206,75 +241,106 @@ body {
         /* --- Estilos para elementos visuales adicionales --- */
 
         @keyframes sakuraBloom {
-            0% { transform: scale(1); opacity: 0.5; }
-            100% { transform: scale(1.05); opacity: 0.6; }
+            0% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: scale(1.05);
+                opacity: 0.6;
+            }
         }
 
         /* Blue interactive elements */
         .blue-element {
             position: absolute;
-            width: 150px; /* Size of the element */
+            width: 150px;
+            /* Size of the element */
             height: 150px;
             background-color: var(--blue-element-color);
-            border-radius: 50%; /* Make it circular, or adjust for different shapes */
-            filter: blur(50px); /* Soft blur effect */
+            border-radius: 50%;
+            /* Make it circular, or adjust for different shapes */
+            filter: blur(50px);
+            /* Soft blur effect */
             transition: background-color 0.5s ease;
-            pointer-events: none; /* Allows clicks to pass through */
+            pointer-events: none;
+            /* Allows clicks to pass through */
             z-index: 1;
-            opacity: 0.7; /* Adjust opacity */
+            opacity: 0.7;
+            /* Adjust opacity */
             animation: floatAndPulse 5s ease-in-out infinite alternate;
         }
 
         .blue-element.top-left {
-            top: -50px; /* Start off-screen slightly */
+            top: -50px;
+            /* Start off-screen slightly */
             left: -50px;
             transform: rotate(20deg);
         }
 
         .blue-element.bottom-left {
-            bottom: -50px; /* Start off-screen slightly */
+            bottom: -50px;
+            /* Start off-screen slightly */
             left: -50px;
             transform: rotate(-30deg);
-            animation-delay: 2.5s; /* Stagger animation */
+            animation-delay: 2.5s;
+            /* Stagger animation */
         }
 
         /* Responsive adjustments for corner images */
-        .top-left-img { /* Renamed class for clarity */
+        .top-left-img {
+            /* Renamed class for clarity */
             position: absolute;
             top: 0;
             left: 0;
-            width: 15vw; /* Use vw for responsive width */
-            max-width: 100px; /* Max width to prevent it from getting too large */
-            height: auto; /* Maintain aspect ratio */
-            z-index: 0; /* Send behind other content */
+            width: 15vw;
+            /* Use vw for responsive width */
+            max-width: 100px;
+            /* Max width to prevent it from getting too large */
+            height: auto;
+            /* Maintain aspect ratio */
+            z-index: 0;
+            /* Send behind other content */
         }
+
         .shape-bottom {
             position: absolute;
             left: 0;
             bottom: 0;
-            width: 25vw; /* Use vw for responsive width */
-            max-width: 200px; /* Max width to prevent it from getting too large */
-            height: auto; /* Maintain aspect ratio */
-            z-index: 0; /* Send behind other content */
+            width: 25vw;
+            max-width: 200px;
+            height: auto;
+            z-index: 0;
         }
+
 
         /* Responsive adjustments for right-side images */
         .right-img,
         .right-img2 {
             position: absolute;
-            right: 0; /* Position at the right edge */
-            height: 96vh; /* Maintain vertical height */
-            width: auto; /* Allow width to adjust based on height */
-            transform: translateX(18%); /* Push 30% of its own width off-screen to the right */
+            right: 0;
+            /* Position at the right edge */
+            height: 96vh;
+            /* Maintain vertical height */
+            width: auto;
+            /* Allow width to adjust based on height */
+            transform: translateX(18%);
+            /* Push 30% of its own width off-screen to the right */
             top: 0;
-            z-index: 0; /* Send behind other content */
-            transition: opacity 0.5s ease, transform 0.5s ease; /* Add transform to transition */
+            z-index: 0;
+            /* Send behind other content */
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            /* Add transform to transition */
         }
+
         .right-img2 {
             height: 87vh;
             top: -5px;
-            transform: translateX(18%); /* Also push off-screen */
+            transform: translateX(18%);
+            /* Also push off-screen */
         }
+
         .right-black {
             position: absolute;
             right: 0;
@@ -287,28 +353,50 @@ body {
         }
 
         @keyframes floatAndPulse {
-            0% { transform: translate(0, 0) scale(1); opacity: 0.7; }
-            50% { transform: translate(10px, 10px) scale(1.05); opacity: 0.8; }
-            100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.7;
+            }
+
+            50% {
+                transform: translate(10px, 10px) scale(1.05);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.7;
+            }
         }
 
         .timer-display {
-            position: relative; /* Important for positioning elements relative to it */
-            z-index: 3; /* Ensure text is above any potential overlapping background elements */
+            position: relative;
+            /* Important for positioning elements relative to it */
+            z-index: 3;
+            /* Ensure text is above any potential overlapping background elements */
         }
 
         /* --- Nuevos estilos para las hojas que caen --- */
         .falling-leaf {
             position: absolute;
-            width: 25px; /* Tamaño de la hoja */
-            height: 25px; /* Tamaño de la hoja */
-            background-color: #F110A4; /* Color base, si no se usa SVG */
-            border-radius: 50% 5px 50% 5px; /* Forma de hoja rudimentaria */
-            opacity: 0; /* Empieza invisible */
-            pointer-events: none; /* No interfiere con clics */
-            animation: fallAndFade 10s linear infinite; /* Animación principal */
-            z-index: 0; /* Detrás de todo lo demás */
-            box-shadow: 0 0 5px hsla(0, 0%, 100%, 0.63); /* Pequeña sombra */
+            width: 25px;
+            /* Tamaño de la hoja */
+            height: 25px;
+            /* Tamaño de la hoja */
+            background-color: #F110A4;
+            /* Color base, si no se usa SVG */
+            border-radius: 50% 5px 50% 5px;
+            /* Forma de hoja rudimentaria */
+            opacity: 0;
+            /* Empieza invisible */
+            pointer-events: none;
+            /* No interfiere con clics */
+            animation: fallAndFade 10s linear infinite;
+            /* Animación principal */
+            z-index: 0;
+            /* Detrás de todo lo demás */
+            box-shadow: 0 0 5px hsla(0, 0%, 100%, 0.63);
+            /* Pequeña sombra */
             /* SVG de hoja de sakura en base64 para mejor forma */
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23F110A4" d="M50,0 Q70,20 80,40 C80,60 60,80 50,100 Q40,80 20,60 C20,40 30,20 50,0 Z"/></svg>');
             background-size: cover;
@@ -318,7 +406,8 @@ body {
 
         /* Variaciones de color para las hojas en tema claro */
         body.light-theme .falling-leaf {
-            background-color: #E294CE; /* Un rosa más claro para el tema claro */
+            background-color: #E294CE;
+            /* Un rosa más claro para el tema claro */
             box-shadow: 0 0 5px rgba(222, 255, 225, 0.7);
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23E294CE" d="M50,0 Q70,20 80,40 C80,60 60,80 50,100 Q40,80 20,60 C20,40 30,20 50,0 Z"/></svg>');
         }
@@ -329,35 +418,46 @@ body {
                 transform: translate(0, -10vh) rotate(0deg);
                 opacity: 0;
             }
+
             10% {
-                opacity: 0.8; /* Aparece */
+                opacity: 0.8;
+                /* Aparece */
             }
+
             80% {
-                transform: translate(-50px, 100vh) rotate(720deg); /* Cae y se mueve un poco a la izquierda */
+                transform: translate(-50px, 100vh) rotate(720deg);
+                /* Cae y se mueve un poco a la izquierda */
                 opacity: 0.8;
             }
+
             100% {
-                transform: translate(-100px, 110vh) rotate(1080deg); /* Sale de la pantalla y se desvanece */
+                transform: translate(-100px, 110vh) rotate(1080deg);
+                /* Sale de la pantalla y se desvanece */
                 opacity: 0;
             }
         }
 
 
         /* --- Responsive adjustments for new elements --- */
-        @media (max-width: 1024px) { /* Adjust tree size for smaller desktops/laptops */
+        @media (max-width: 1024px) {
+
+            /* Adjust tree size for smaller desktops/laptops */
             .sakura-tree-div {
                 width: 250px;
                 height: 250px;
             }
+
             .blue-element {
                 width: 120px;
                 height: 120px;
                 filter: blur(40px);
             }
+
             .right-img,
             .right-img2,
             .right-black {
-                transform: translateX(25%); /* Adjust offset for smaller screens */
+                transform: translateX(25%);
+                /* Adjust offset for smaller screens */
             }
         }
 
@@ -365,26 +465,33 @@ body {
             .sakura-tree-div {
                 width: 200px;
                 height: 200px;
-                right: -50px; /* Adjust position for smaller screens */
+                right: -50px;
+                /* Adjust position for smaller screens */
                 bottom: -50px;
             }
+
             .blue-element {
                 width: 100px;
                 height: 100px;
                 filter: blur(30px);
             }
+
             .blue-element.top-left {
                 top: -30px;
                 left: -30px;
             }
+
             .blue-element.bottom-left {
                 bottom: -30px;
                 left: -30px;
             }
+
             .falling-leaf {
-                width: 20px; /* Hojas más pequeñas en móvil */
+                width: 20px;
+                /* Hojas más pequeñas en móvil */
                 height: 20px;
             }
+
             .right-img,
             .right-img2,
             .right-black {
@@ -392,61 +499,82 @@ body {
                 top: inherit;
                 bottom: 0 !important;
             }
-            .right-img2 {
-                
-            }
+
+            .right-img2 {}
+
             .title {
-                font-size: 2.5rem; /* Smaller title on tablets */
+                font-size: 2.5rem;
+                /* Smaller title on tablets */
             }
+
             .timer-display {
-                font-size: 3.5rem; /* Smaller timer on tablets */
+                font-size: 3.5rem;
+                /* Smaller timer on tablets */
             }
         }
 
         @media (max-width: 600px) {
             .sakura-tree-div {
-                display: none; /* Hide tree on very small screens to save space */
+                display: none;
+                /* Hide tree on very small screens to save space */
             }
+
             .blue-element {
                 width: 80px;
                 height: 80px;
                 filter: blur(20px);
             }
+
             .blue-element.top-left {
                 top: -20px;
                 left: -20px;
             }
+
             .blue-element.bottom-left {
                 bottom: -20px;
                 left: -20px;
             }
+
             .falling-leaf {
-                width: 15px; /* Aún más pequeñas en pantallas muy pequeñas */
+                width: 15px;
+                /* Aún más pequeñas en pantallas muy pequeñas */
                 height: 15px;
             }
+
             .right-img,
             .right-img2,
             .right-black {
                 display: none !important;
             }
+
             .title {
-                font-size: 2rem; /* Even smaller title on mobile */
+                font-size: 2rem;
+                /* Even smaller title on mobile */
             }
+
             .timer-display {
-                font-size: 2.8rem; /* Even smaller timer on mobile */
+                font-size: 2.8rem;
+                /* Even smaller timer on mobile */
             }
+
             .timer-display span {
-                margin: 0 0.2rem; /* Reduce margin between time units */
+                margin: 0 0.2rem;
+                /* Reduce margin between time units */
             }
+
             .timer-label {
-                font-size: 1rem; /* Smaller labels on mobile */
+                font-size: 1rem;
+                /* Smaller labels on mobile */
             }
+
             .message {
-                font-size: 1.2rem; /* Smaller message on mobile */
+                font-size: 1.2rem;
+                /* Smaller message on mobile */
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Se utilizan imágenes de marcador de posición ya que las rutas originales eran locales. Reemplaza con URLs de imágenes reales si están disponibles. -->
     <img class="top-left-img" src="./images/cut.png" alt="Elemento decorativo">
@@ -454,19 +582,31 @@ body {
     <div class="blue-element top-left"></div>
     <div class="blue-element bottom-left"></div>
     <button id="themeToggleButton" class="theme-toggle-button">
-        <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: block;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-        <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: block;">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+        <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
     </button>
     <div class="container">
         <h1 class="title">AWS Community Fest</h1>
         <div id="timerDisplay" class="timer-display">
         </div>
         <div id="message" class="message"></div>
+        <img src="./images/shape-bottom.png" class="shape-bottom" alt="Forma decorativa">
     </div>
     <!-- Se utilizan imágenes de marcador de posición ya que las rutas originales eran locales. Reemplaza con URLs de imágenes reales si están disponibles. -->
     <img id="sakuraRightLight" src="images/sakura beautiful.png" alt="Árbol de Sakura Claro" class="right-img">
     <img id="sakuraRightDark" src="images/sakura-2-Photoroom.png" alt="Árbol de Sakura Oscuro" class="right-img2">
-    <img src="./images/shape-bottom.png" class="shape-bottom" alt="Forma decorativa">
 
     <script>
         const timerDisplay = document.getElementById('timerDisplay');
@@ -580,4 +720,5 @@ body {
         updateCountdown();
     </script>
 </body>
+
 </html>
