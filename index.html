@@ -305,16 +305,17 @@
         }
 
         .shape-bottom {
-            position: fixed;
-            /* ✅ Se queda pegado a la ventana */
+            position: absolute;
             left: 0;
             bottom: 0;
             width: 25vw;
+            /* Use vw for responsive width */
             max-width: 200px;
+            /* Max width to prevent it from getting too large */
             height: auto;
+            /* Maintain aspect ratio */
             z-index: 0;
-            pointer-events: none;
-            /* Opcional: para no bloquear clics */
+            /* Send behind other content */
         }
 
         /* Responsive adjustments for right-side images */
@@ -516,6 +517,7 @@
         }
 
         @media (max-width: 600px) {
+
             .sakura-tree-div {
                 display: none;
                 /* Hide tree on very small screens to save space */
@@ -572,6 +574,19 @@
             .message {
                 font-size: 1.2rem;
                 /* Smaller message on mobile */
+            }
+
+            .shape-bottom {
+                position: fixed;
+                /* ✅ Se queda pegado a la ventana */
+                left: 0;
+                bottom: 0;
+                width: 25vw;
+                max-width: 200px;
+                height: auto;
+                z-index: 0;
+                pointer-events: none;
+                /* Opcional: para no bloquear clics */
             }
         }
     </style>
